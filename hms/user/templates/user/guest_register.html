@@ -1,0 +1,23 @@
+{% extends "user/base.html" %}
+
+{% block title %}Munaaha Hotel Management{% endblock %}
+
+{% block content %}
+<div class=row>
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div class="form_header">
+            <h2>Registration Form</h2>
+        </div>
+        <div class="form_body">
+            {% load crispy_forms_tags %}
+            <form method="POST" class="form-group">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+{% endblock %}
