@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -40,3 +40,12 @@ def user_login(request):
             return HttpResponse("Invalid login details given")
     else:
         return render(request,'registration/login.html', {})
+
+@login_required
+def special(request):
+    return HttpResponse("You are logged in !")
+
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))
